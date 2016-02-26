@@ -1,0 +1,20 @@
+{
+    "scripts" : {
+        "js/plugins.js" : [
+            "web/assets/vendor/jquery/dist/jquery.js",
+            "web/assets/vendor/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"
+        ],
+        "js/main.js" : [
+            "app/Resources/assets/scripts/main.js"
+        ]
+    },
+    "styles" : {
+        "css/plugins.css" : [
+            "web/assets/vendor/bootstrap-datepicker/css/datepicker3.css"
+        ],
+            "css/main.css" : [
+            "tmp/assets/styles/bootstrap.css",
+            "tmp/assets/styles/main.css"
+        ]
+    }
+}

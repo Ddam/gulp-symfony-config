@@ -1,0 +1,27 @@
+{
+    "name": "cleophyr-website",
+    "version": "1.0.0",
+    "description": "",
+    "author": "",
+    "dependencies": {
+        "del": "^1.2.1",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "0.0.7",
+        "gulp-bytediff": "^1.0.0",
+        "gulp-changed": "^0.3.0",
+        "gulp-concat": "^2.6.0",
+        "gulp-csso": "^0.2.9",
+        "gulp-filter": "^0.4.1",
+        "gulp-load-plugins": "^0.5.3",
+        "gulp-ruby-sass": "^0.4.3",
+        "gulp-task-listing": "^1.0.1",
+        "gulp-uglify": "^0.2.1",
+        "gulp-bower": "0.0.13",
+        "node-notifier": "^4.5.0",
+        "run-sequence": "^0.3.7",
+        "streamqueue": "0.0.6"
+        },
+        "devDependencies": {
+            "gulp-bower": "0.0.13"
+        }
+    }
