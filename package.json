@@ -17,11 +17,15 @@
         "gulp-task-listing": "^1.0.1",
         "gulp-uglify": "^0.2.1",
         "gulp-bower": "0.0.13",
+        "gulp-iconfont": "^6",
+        "gulp-consolidate": "0.1.2",
         "node-notifier": "^4.5.0",
         "run-sequence": "^0.3.7",
         "streamqueue": "0.0.6"
-        },
-        "devDependencies": {
-            "gulp-bower": "0.0.13"
-        }
+    },
+    "devDependencies": {
+        "gulp-bower": "0.0.13",
+        "gulp-consolidate": "^0.1.2",
+        "gulp-iconfont": "^6.0.0"
     }
+}

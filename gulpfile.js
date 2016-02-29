@@ -1,5 +1,6 @@
 'use strict';
 
+var async = require('async');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 // Load plugins
@@ -36,6 +37,44 @@ gulp.task('fonts', function() {
     stream.queue(gulp.src('app/Resources/assets/fonts/**'));
     return stream.done()
     .pipe(gulp.dest('web/assets/fonts'));
+});
+
+/**
+* This is needed for mapping glyphs and codepoints.
+*/
+function mapGlyphs(glyph) {
+    return { name: glyph.name, codepoint: glyph.unicode[0].charCodeAt(0) }
+}
+
+gulp.task('iconfont', function(done){
+    var iconStream = gulp.src(['app/Resources/assets/icons/*.svg'])
+    .pipe(plugins.iconfont({
+        fontName: 'icons-font',
+        normalize: true,
+        fontHeight: 1001,
+        formats: ['ttf', 'eot', 'woff', 'woff2', 'svg']
+    }));
+
+    async.parallel([
+        function handleGlyphs (cb) {
+            iconStream.on('glyphs', function(glyphs, options) {
+                gulp.src('app/Resources/assets/templates/icons-font.css')
+                .pipe(plugins.consolidate('lodash', {
+                    glyphs: glyphs.map(mapGlyphs),
+                    fontName: 'icons-font',
+                    fontPath: '../fonts/',
+                    className: 'ifont'
+                }))
+                .pipe(gulp.dest('web/assets/css/'))
+                .on('finish', cb);
+            });
+        },
+        function handleFonts (cb) {
+            iconStream
+            .pipe(gulp.dest('web/assets/fonts/'))
+            .on('finish', cb);
+        }
+    ], done);
 });
 
 gulp.task('styles', ['compass'], function() {
@@ -77,6 +116,7 @@ gulp.task('optimize', ['scripts', 'styles', 'fonts'], function() {
 gulp.task('watch', function () {
     gulp.watch('app/Resources/assets/styles/**/*.scss', ['styles']);
     gulp.watch('app/Resources/assets/scripts/**/*.js', ['scripts']);
+    gulp.watch('app/Resources/assets/icons/**/*.svg', ['iconfont']);
 });
 
 gulp.task('bower-install', function () {
