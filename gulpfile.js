@@ -39,6 +39,14 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('web/assets/fonts'));
 });
 
+gulp.task('translations', function() {
+    var stream = plugins.streamqueue({ objectMode: true });
+
+    stream.queue(gulp.src('app/Resources/assets/translations/**'));
+    return stream.done()
+    .pipe(gulp.dest('web/assets/translations'));
+});
+
 /**
 * This is needed for mapping glyphs and codepoints.
 */
@@ -117,6 +125,7 @@ gulp.task('watch', function () {
     gulp.watch('app/Resources/assets/styles/**/*.scss', ['styles']);
     gulp.watch('app/Resources/assets/scripts/**/*.js', ['scripts']);
     gulp.watch('app/Resources/assets/icons/**/*.svg', ['iconfont']);
+    gulp.watch('app/Resources/assets/translations/**/*.json', ['translations']);
 });
 
 gulp.task('bower-install', function () {
