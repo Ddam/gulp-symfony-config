@@ -10,12 +10,12 @@ Vous trouverez l'ensemble des fichiers de configuration nécessaire au bon fonct
 Une fois ces outils installés, pensez à supprimer Assetic de votre projet:
 
 * Dans app/AppKernel.php, supprimer la ligne suivante :
-```
+```php
 new Symfony\Bundle\AsseticBundle\AsseticBundle(),
 ```
 
 * Dans app/config.yml, supprimer la configuration assetic :
-```
+```yaml
 assetic:
     debug: "%kernel.debug%"
     use_controller: false
@@ -26,7 +26,39 @@ assetic:
 ```
 
 * Suivi du fichier app/config_dev.php :
-```
+```yaml
 assetic:
     use_controller: true
+```
+
+### Modules node utilisés
+
+Voici une liste ressencant l'ensemble des modules node utilisés.
+
+* gulp 
+* async
+* gulp-load-plugins
+* run-sequence
+* del
+* streamqueue
+* gulp-filter
+* gulp-bower
+* gulp-concat
+* gulp-changed
+* gulp-ruby-sass
+* gulp-autoprefixer
+* gulp-iconfont
+* gulp-consolidate
+* gulp-uglify
+* gulp-csso
+
+Lancer la commande suivant pour installer l'ensemble :
+```
+npm install --save-dev gulp async gulp-load-plugins run-sequence del streamqueue gulp-filter gulp-bower gulp-concat gulp-changed gulp-ruby-sass gulp-autoprefixer gulp-iconfont gulp-consolidate gulp-uglify gulp-csso
+```
+
+ou ( avec le fichier package.json )
+
+```
+npm install
 ```
