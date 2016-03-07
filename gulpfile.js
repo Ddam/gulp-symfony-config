@@ -12,7 +12,7 @@ var assets = require('./assets.json');
 var jsFilter = plugins.filter('**/*.js');
 var cssFilter = plugins.filter('**/*.css');
 
-gulp.task('compass', function() {
+gulp.task('sass', function() {
     return gulp.src('app/Resources/assets/styles/**/*.scss')
     .pipe(plugins.changed('tmp/assets/styles'))
     .pipe(plugins.rubySass({
@@ -85,7 +85,7 @@ gulp.task('iconfont', function(done){
     ], done);
 });
 
-gulp.task('styles', ['compass'], function() {
+gulp.task('styles', ['sass'], function() {
     var stream = plugins.streamqueue({ objectMode: true });
 
     // concat styles files
@@ -109,7 +109,7 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('web/assets'))
 });
 
-gulp.task('optimize', ['scripts', 'styles', 'fonts'], function() {
+gulp.task('build', ['bower-install', 'scripts', 'styles', 'iconfont', 'fonts', 'translations'], function() {
     return gulp.src('web/assets/**/*')
     .pipe(plugins.changed('web/assets/**/*'))
     .pipe(jsFilter)
