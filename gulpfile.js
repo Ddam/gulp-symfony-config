@@ -5,7 +5,6 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 // Load plugins
 var plugins = require('gulp-load-plugins')();
-plugins.runSequence = require('run-sequence');
 plugins.del = require('del');
 plugins.streamqueue = require('streamqueue');
 var assets = require('./assets.json');
